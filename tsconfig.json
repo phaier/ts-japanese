@@ -1,0 +1,25 @@
+{
+  "compilerOptions": {
+    "target": "es6",
+    "module": "commonjs",
+    "moduleResolution": "node",
+    "jsx": "react",
+    "strict": true,
+    "removeComments": true,
+    "typeRoots": ["node_modules/@types"],
+    "newLine": "LF",
+    "declaration": true,
+    "sourceMap": true,
+    "composite": true,
+    "experimentalDecorators": true
+  },
+  "formatCodeOptions": {
+    "indentSize": 2,
+    "tabSize": 2,
+    "convertTabsToSpaces": true
+  },
+  "include": ["./lib/**/*.ts", "./lib/**/*.tsx"],
+  "exclude": ["./node_modules/**/*.ts", "./node_modules/**/*.tsx", "./typings/**/*.ts"],
+  "compileOnSave": false,
+  "buildOnSave": false
+}
