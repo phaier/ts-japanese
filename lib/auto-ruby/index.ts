@@ -1,5 +1,5 @@
-import { toKana } from '../roman/toKana';
 import { BACK_SPACE, HANKAKU, isAlphabet, isNumber, isSymbol } from './key';
+import { toKana } from '../roman/toKana';
 
 export interface KeyboardEventLike {
   altKey: boolean;
@@ -12,28 +12,30 @@ export interface KeyboardEventLike {
 }
 
 export class AutoRuby {
-  private _buffer: string[];
+  private buffer: string[];
 
-  private _raw: string;
+  private raw: string;
 
-  private _ruby: string;
+  private ruby: string;
 
   public constructor() {
-    this._buffer = [];
-    this._raw = '';
-    this._ruby = '';
+    this.buffer = [];
+    this.raw = '';
+    this.ruby = '';
   }
 
   public keypress(e: KeyboardEventLike, input: string) {
     if (!e.key) {
       return;
-    } else if (isAlphabet(e.key) || isNumber(e.key) || isSymbol(e.key)) {
-      this._buffer.push(e.key);
+    }
+
+    if (isAlphabet(e.key) || isNumber(e.key) || isSymbol(e.key)) {
+      this.buffer.push(e.key);
     } else if (e.key === BACK_SPACE) {
       if (input) {
-        this._buffer = this._buffer.slice(0, -1);
+        this.buffer = this.buffer.slice(0, -1);
       } else {
-        this._buffer = [];
+        this.buffer = [];
       }
     } else if (e.key === HANKAKU) {
       // 全角に切り替えたときだけこれが出る
@@ -43,17 +45,17 @@ export class AutoRuby {
       return;
     }
 
-    const raw = this._buffer.join('');
+    const raw = this.buffer.join('');
 
-    this._raw = raw;
-    this._ruby = toKana(raw);
+    this.raw = raw;
+    this.ruby = toKana(raw);
   }
 
   public getRaw(): string {
-    return this._raw;
+    return this.raw;
   }
 
   public getRuby(): string {
-    return this._ruby;
+    return this.ruby;
   }
 }

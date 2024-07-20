@@ -15,23 +15,23 @@ export function toKana(roman: string): string {
 
   while (true) {
     if (len <= i) {
-      result = result + temp;
+      result += temp;
       break;
     }
 
     const c = _roman.charAt(i);
     const code = _roman.charCodeAt(i);
 
-    if (code < 0x61 || 0x7a < code) {
-      result = result + temp;
+    if (code < 0x61 || code > 0x7a) {
+      result += temp;
       temp = '';
 
       switch (c) {
         case '-':
-          result = result + 'ー';
+          result += 'ー';
           break;
         default:
-          result = result + c;
+          result += c;
           break;
       }
 
@@ -40,16 +40,16 @@ export function toKana(roman: string): string {
     }
 
     // 残りの先頭部分をバッファーする
-    temp = temp + c;
+    temp += c;
 
     const tabled = toKanaTable[temp];
     if (tabled) {
       // テーブルで変換可能 => 変換
-      result = result + tabled;
+      result += tabled;
       temp = '';
     }
 
-    if (2 === temp.length) {
+    if (temp.length === 2) {
       // 二文字で始まっていい子音かどうか？
       if (isDoubleConsonant(temp)) {
         i++;
@@ -59,7 +59,7 @@ export function toKana(roman: string): string {
       if (temp.charAt(0) === 'n') {
         if (temp.charAt(1) === 'n') {
           // n + n => 『ん』
-          result = result + 'ん';
+          result += 'ん';
           temp = temp.substring(2);
           i++;
           continue;
@@ -67,7 +67,7 @@ export function toKana(roman: string): string {
 
         if (!isVowel(temp.charAt(1))) {
           // n + 子音 => 『ん』 + 子音
-          result = result + 'ん';
+          result += 'ん';
           temp = temp.substring(1);
           i++;
           continue;
@@ -76,7 +76,7 @@ export function toKana(roman: string): string {
 
       if (temp.charAt(0) === 'n' && !isVowel(temp.charAt(1))) {
         // n + 子音 => 『ん』 + 子音
-        result = result + 'ん';
+        result += 'ん';
         temp = temp.substring(1);
         i++;
         continue;
@@ -84,14 +84,14 @@ export function toKana(roman: string): string {
 
       if (temp.charAt(0) === temp.charAt(1) && !isVowel(temp.charAt(0))) {
         // 同一子音 * 2 => 『っ』 + 子音
-        result = result + 'っ';
+        result += 'っ';
         temp = temp.substring(1);
         i++;
         continue;
       }
 
       if (!isVowel(temp.charAt(0)) && !isVowel(temp.charAt(1))) {
-        result = result + temp.charAt(0);
+        result += temp.charAt(0);
         temp = temp.substring(1);
         i++;
         continue;
@@ -99,7 +99,7 @@ export function toKana(roman: string): string {
     }
 
     if (temp.length === 3) {
-      result = result + temp.charAt(0);
+      result += temp.charAt(0);
       temp = temp.substring(1);
       i++;
       continue;

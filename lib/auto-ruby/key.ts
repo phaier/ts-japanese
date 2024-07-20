@@ -10,18 +10,18 @@ export const NUM_LOCK = 'NumLock';
 
 export function isAlphabet(c: string): boolean {
   if (c.length === 1) {
-    return ('a' <= c && c <= 'z') || ('A' <= c && c <= 'Z');
-  } else {
-    return false;
+    return (c >= 'a' && c <= 'z') || (c >= 'A' && c <= 'Z');
   }
+
+  return false;
 }
 
 export function isNumber(c: string): boolean {
   if (c.length === 1) {
-    return '0' <= c && c <= '9';
-  } else {
-    return false;
+    return c >= '0' && c <= '9';
   }
+
+  return false;
 }
 
 export function isSymbol(c: string): boolean {

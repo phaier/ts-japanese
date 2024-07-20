@@ -1,6 +1,6 @@
 {
   "name": "@phaier/japanese",
-  "version": "0.1.0-alpha.6",
+  "version": "0.1.0",
   "description": "Japanese utilities for TypeScript",
   "main": "./lib/index.js",
   "types": "./lib/index.d.ts",
@@ -8,22 +8,22 @@
     "japanese"
   ],
   "scripts": {
-    "build": "tsc",
-    "clean": "jake clean",
-    "lint": "tslint -c tslint.json -p tsconfig.json",
-    "prepublish": "tsc",
-    "test": "npm run clean && jest"
+    "build": "tsc --build",
+    "clean": "tsc --build --clean",
+    "lint": "eslint . --ext .js,.jsx,.ts,.tsx",
+    "prepublish": "tsc --build --clean",
+    "test": "jake clean && jest"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/phaier/ts-helper.git"
+    "url": "git+https://github.com/phaier/ts-japanese.git"
   },
   "author": "inabe49",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/phaier/ts-helper/issues"
+    "url": "https://github.com/phaier/ts-japanese/issues"
   },
-  "homepage": "https://github.com/phaier/ts-helper#readme",
+  "homepage": "https://github.com/phaier/ts-japanese#readme",
   "dependencies": {},
   "devDependencies": {
     "@phaier/eslint-config-typescript": "^0.0.4",

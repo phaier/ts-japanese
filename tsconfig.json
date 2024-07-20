@@ -5,13 +5,16 @@
     "moduleResolution": "node",
     "jsx": "react",
     "strict": true,
-    "removeComments": true,
+    "removeComments": false,
     "typeRoots": ["node_modules/@types"],
     "newLine": "LF",
     "declaration": true,
+    "declarationMap": true,
     "sourceMap": true,
     "composite": true,
-    "experimentalDecorators": true
+    "experimentalDecorators": true,
+    "outDir": "./dist",
+    "rootDir": "./lib"
   },
   "formatCodeOptions": {
     "indentSize": 2,
@@ -19,7 +22,5 @@
     "convertTabsToSpaces": true
   },
   "include": ["./lib/**/*.ts", "./lib/**/*.tsx"],
-  "exclude": ["./node_modules/**/*.ts", "./node_modules/**/*.tsx", "./typings/**/*.ts"],
-  "compileOnSave": false,
-  "buildOnSave": false
+  "exclude": ["./node_modules/**/*.ts", "./node_modules/**/*.tsx", "./typings/**/*.ts"]
 }

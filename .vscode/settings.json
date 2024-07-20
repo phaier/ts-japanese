@@ -1,14 +1,15 @@
 {
   "files.exclude": {
     "**/node_modules": true,
-    "*.tgz": true,
-    "lib/**/*.d.ts": true,
-    "lib/**/*.js": true,
-    "lib/**/*.js.map": true
+    "*.tgz": true
   },
   "search.exclude": {
     "**/package-lock.json": true,
-    "**/tsconfig.tsbuildinfo": true
+    "**/tsconfig.tsbuildinfo": true,
+    "dist/**/*.d.ts": true,
+    "dist/**/*.d.ts.map": true,
+    "dist/**/*.js": true,
+    "dist/**/*.js.map": true
   },
   "files.eol": "\n",
   "eslint.lintTask.options": " . --ext .js,.jsx,.ts,.tsx",

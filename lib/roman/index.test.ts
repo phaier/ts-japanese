@@ -153,17 +153,17 @@ describe('ローマ字変換', () => {
 
     ['きょうと', ['kyouto']],
   ])('かな <==> ローマ字 : %s <==> %j', (kana, romans) => {
-    for (const roman of romans) {
+    romans.forEach((roman) => {
       expect(toKana(roman)).toBe(kana);
-    }
+    });
 
     const actual = toRomans(kana);
-    for (const a of actual) {
+    actual.forEach((a) => {
       expect(actual.filter((ac) => ac === a).length).toBe(1);
-    }
+    });
 
-    for (const roman of romans) {
+    romans.forEach((roman) => {
       expect(actual).toContain(roman);
-    }
+    });
   });
 });

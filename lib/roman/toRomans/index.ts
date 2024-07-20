@@ -1,5 +1,5 @@
-import { flatConcat } from '../helper';
 import { toRomansTable } from './table';
+import { flatConcat } from '../helper';
 
 const mins: string = 'ゃゅょぁぃぅぇぉ';
 
