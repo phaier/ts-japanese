@@ -2,8 +2,8 @@
   "name": "@phaier/japanese",
   "version": "0.1.0",
   "description": "Japanese utilities for TypeScript",
-  "main": "./lib/index.js",
-  "types": "./lib/index.d.ts",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
   "keywords": [
     "japanese"
   ],
@@ -11,8 +11,8 @@
     "build": "tsc --build",
     "clean": "tsc --build --clean",
     "lint": "eslint . --ext .js,.jsx,.ts,.tsx",
-    "prepublish": "tsc --build --clean",
-    "test": "jake clean && jest"
+    "prepublish": "tsc --build --clean && tsc --build",
+    "test": "jest"
   },
   "repository": {
     "type": "git",
@@ -24,17 +24,13 @@
     "url": "https://github.com/phaier/ts-japanese/issues"
   },
   "homepage": "https://github.com/phaier/ts-japanese#readme",
-  "dependencies": {},
   "devDependencies": {
     "@phaier/eslint-config-typescript": "^0.0.4",
     "@types/jest": "^29.5.12",
-    "del": "^7.1.0",
-    "jake": "^10.9.2",
     "jest": "^29.7.0",
     "ts-jest": "^29.2.3",
     "typescript": "^5.5.3"
   },
-  "peerDependencies": {},
   "volta": {
     "node": "18.20.4"
   }
